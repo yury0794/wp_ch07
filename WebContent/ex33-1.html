@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+*		{margin:0; padding:0;}
+body	{
+	font-family:"맑은 고딕", 돋움;
+	font-size:0.75em;
+	color:#333;
+}
+#my-box	{
+	position:absolute;
+	top:200px;
+	left:100px;
+	width:100px;
+	height:100px;
+	background-color:#1ef;
+	color:#fff;
+	text-align:center;
+	line-height:100px;
+}
+</style>
+<script type="text/javascript" src="./jquery/jquery-1.9.0.js"></script>
+<script>
+var interval = null;
+var moveBox = function() {
+	// var top = parseInt($("#my-box").css("top"), 10);
+	var top = $("#my-box").position().top;
+	var height = $("#my-box").height();
+	if(top+height<=10) {
+		clearInterval(interval);
+		return;
+	}
+	$("#my-box").css("top", (top-10)+"px");
+	$("#my-box").css("left", 100+"px");
+}
+
+$(function() { // main()
+	interval = setInterval(moveBox, 100);
+});
+</script>
+</head>
+<body>
+	<div id="my-box">나는 박스</div>
+</body>
+</html>

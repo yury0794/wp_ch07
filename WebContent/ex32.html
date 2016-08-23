@@ -6,6 +6,10 @@
 <script type="text/javascript">
 	$( function() {
 		/* 코드를 완성하세요 */
+		setTimeout(function() {
+			$("p").replaceWith("<div><strong>변경후</strong></div>");
+			// .html("<div><strong>변경후</strong></div>"); <p></p>가 살아있음
+		}, 2000);		
 	} );  
 </script>
 </head>

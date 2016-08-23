@@ -6,16 +6,19 @@
 <script type="text/javascript">
 	$( function() {
 		/* 코드를 완성하세요 */
-
-		
-	} );  
+		setTimeout(function() {
+			$("strong, p").wrapAll("<div>");
+			$("div").css({
+				border:"1px solid #ccc",
+	            width:"200px",
+	            padding:"20px"
+			});
+		}, 2000);		
+	});  
 </script>
 </head>
 <body>
-
-
 <strong>타이틀입니다.</strong>
 <p>내용입니다.</p>
-
 </body>
 </html>

@@ -6,7 +6,12 @@
 <script type="text/javascript">
 	$( function() {
 		/* 코드를 완성하세요 */
-} );  
+		setTimeout(function() {
+			$(".d1").wrap("<h1>");
+			$(".d2").wrap("<h3>");
+			$("h3").css("margin-left", "30px");
+		}, 2000);
+	} );  
 </script>
 </head>
 <body>

@@ -5,7 +5,8 @@
 <title>sample1</title>
 <script type="text/javascript" src="./jquery/jquery-1.9.0.js"></script>
 <script type="text/javascript">
-
+var intervalSlideShow = null;
+var indexImage = 0;
 var images = [ 
 	"국화:Chrysanthemum.jpg", 
 	"사막:Desert.jpg", 
@@ -16,20 +17,60 @@ var images = [
 	"펭귄:Penguins.jpg", 
 	"툴립:Tulips.jpg" ];
 
-$(function(){
+var slideshow = function() {
+	var datas = images[indexImage].split(":");
+	$("img").attr({
+		"src":"images/"+datas[1],
+		"alt":datas[0]
+	});
+	$(#image-title).text(datas[0],)
+	indexImage += 1;
+	if(indexImage == images.length){
+		indexImage = 0;
+	}
+	
+	console.log("slideshow called" + indexImage);
+}
 
-	$("button").click(function(){
+$(function(){
+	$("image-change").click(function(){
 		// 랜덤 변수 
-		var result = Math.floor( Math.random() * (images.length-1)  ) + 1;
+		var result = Math.floor( Math.random() * (images.length-1) )+1;
+		var datas = images[result].split(":");
+		
+		$("img").attr({
+			"src":"images/"+datas[1],
+			"alt":datas[0]
+		});		
 	});
 	
+	$("img").click(function() {
+		var $img = $(this);
+		var title = $img.attr("alt");
+		$("#image-title").text(title);
+	});
+	
+	$("#ss-start").click(function() {
+		intervalSlideShow = setInterval(slideshow, 1000);
+	});
+	
+	$("#ss-stop").click(function() {
+		if(intervalSlideShow == null){
+			return;
+		}
+		
+		clearInterval(intervalSlideShow);
+		intervalSlideShow = null;
+	});
 });
 </script>
 </head>
 <body>
-	<button>화면을 변경</button>
+	<button id="image-change">화면을 변경</button>
+	<h1>그림제목 : <strong id="image-title"></strong></h1>
 	<p>
 		<img src="images/Desert.jpg" alt="사막" />
 	</p>
+	<button id="ss-start">슬라이드쇼 시작</button><button id="ss-stop">슬라이드쇼 중지</button>
 </body>
 </html>
